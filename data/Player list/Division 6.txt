@@ -1,0 +1,60 @@
+Squash Division 6
+Player List:
+
+Forename
+•	Surname
+•	Email address
+•	Phone number
+•	Division in current round
+•	Points in current round
+•	Division in previous round
+•	Points in previous round
+
+Forename:John
+Surname:Locke
+E-mail:j.locke@anemailadress.com
+Phone number:
+Divison:6
+Points current round:
+Points previous round:
+
+Forename:Juliet
+Surname:Burke
+E-mail:j.burke@anemailadress.com
+Phone number:
+Divison:6
+Points current round:
+Points previous round:
+
+Forename:Michael
+Surname:Bluth
+E-mail:m.bluth@anemailadress.com
+Phone number:
+Divison:6
+Points current round:
+Points previous round:
+
+Forename:Sam
+Surname:Tyler
+E-mail:s.tyler@anemailadress.com
+Phone number:
+Divison:6
+Points current round:
+Points previous round:
+
+Forename:Peter
+Surname:Bond
+E-mail:p.bond@anemailadress.com
+Phone number:
+Divison:6
+Points current round:
+Points previous round:
+
+Forename:
+Surname:
+E-mail:@anemailadress.com
+Phone number:
+Divison:6
+Points current round:
+Points previous round:
+

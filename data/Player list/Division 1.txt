@@ -1,0 +1,63 @@
+Squash Division 1
+Player List:
+
+Forename
+•	Surname
+•	Email address
+•	Phone number
+•	Division in current round
+•	Points in current round
+•	Division in previous round
+•	Points in previous round
+
+Forename:Joe
+Surname:Bloggs
+Phone number:
+E-mail:j.bloggs@anemailadress.com
+Divison:1
+Points current round:
+Points previous round:
+
+
+Forename:Sarah
+Surname:Brown
+Phone number:
+E-mail:s.brown@anemailadress.com
+Divison:1
+Points current round:
+Points previous round:
+
+Forename:Andrew
+Surname:Smith
+Phone number:
+E-mail:a.smith@anemailadress.com
+Divison:1
+Points current round:
+Points previous round:
+
+
+Forename:Ray
+Surname:Charles
+Phone number:
+E-mail:r.charles@anemailadress.com
+Divison:1
+Points current round:
+Points previous round:
+
+Forename:Kevin
+Surname:White
+Phone number:
+E-mail:@anemailadress.com
+Divison:1
+Points current round:
+Points previous round:
+
+Forename:Samantha 
+Surname:Collins
+E-mail:s.collins@anemailadress.com
+Phone number:
+Divison:1
+Points current round:
+Points previous round:
+
+

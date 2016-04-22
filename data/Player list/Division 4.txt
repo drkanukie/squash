@@ -1,0 +1,63 @@
+Squash Division 4
+Player List:
+
+Forename
+•	Surname
+•	Email address
+•	Phone number
+•	Division in current round
+•	Points in current round
+•	Division in previous round
+•	Points in previous round
+
+Forename:Neil
+Surname:Devon
+E-mail:n.devon@anemailadress.com
+Phone number:
+Divison:4
+Points current round:
+Points previous round:
+
+Forename:Earl
+Surname:Griffin
+E-mail:e.griffin@anemailadress.com
+Phone number:
+Divison:4
+Points current round:
+Points previous round:
+
+Forename:Samantha
+Surname:Smith
+E-mail:s.smith@anemailadress.com
+Phone number:
+Divison:4
+Points current round:
+Points previous round:
+
+Forename:Cathrine
+Surname:Peterson
+E-mail:c.peterson@anemailadress.com
+Phone number:
+Divison:4
+Points current round:
+Points previous round:
+
+Forename:Kevin
+Surname:Fletcher
+E-mail:k.fletcher@anemailadress.com
+Phone number:
+Divison:4
+Points current round:
+Points previous round:
+
+Forename:
+Surname:
+E-mail:@anemailadress.com
+Phone number:
+Divison:4
+Points current round:
+Points previous round:
+
+
+
+
