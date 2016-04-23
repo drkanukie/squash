@@ -1,63 +1,54 @@
 Squash Division 1
 Player List:
 
-Forename
-•	Surname
-•	Email address
-•	Phone number
-•	Division in current round
-•	Points in current round
-•	Division in previous round
-•	Points in previous round
-
 Forename:Joe
 Surname:Bloggs
-Phone number:
-E-mail:j.bloggs@anemailadress.com
-Divison:1
-Points current round:
-Points previous round:
+Phone_number:07896453423
+E_mail:j.bloggs@anemailadress.com
+Division:1
+Points_current_round:
+Points_previous_round:
 
 
 Forename:Sarah
 Surname:Brown
-Phone number:
-E-mail:s.brown@anemailadress.com
-Divison:1
-Points current round:
+Phone_number:07892547632
+E_mail:s.brown@anemailadress.com
+Division:1
+Points_current_round:
 Points previous round:
 
 Forename:Andrew
 Surname:Smith
-Phone number:
-E-mail:a.smith@anemailadress.com
-Divison:1
-Points current round:
-Points previous round:
+Phone_number:07684345432
+E_mail:a.smith@anemailadress.com
+Division:1
+Points_current_round:
+Points_previous_round:
 
 
 Forename:Ray
 Surname:Charles
-Phone number:
-E-mail:r.charles@anemailadress.com
-Divison:1
-Points current round:
-Points previous round:
+Phone_number:07892536783
+E_mail:r.charles@anemailadress.com
+Division:1
+Points_current_round:
+Points_previous_round:
 
 Forename:Kevin
 Surname:White
-Phone number:
-E-mail:@anemailadress.com
-Divison:1
-Points current round:
-Points previous round:
+Phone_number:07825371981
+E_mail:@anemailadress.com
+Division:1
+Points_current_round:
+Points_previous_round:
 
 Forename:Samantha 
 Surname:Collins
-E-mail:s.collins@anemailadress.com
-Phone number:
-Divison:1
-Points current round:
-Points previous round:
+E_mail:s.collins@anemailadress.com
+Phone_number:07834984543
+Division:1
+Points_current_round:
+Points_previous_round:
 
 
