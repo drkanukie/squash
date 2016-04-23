@@ -1,4 +1,4 @@
-import marklist
+# import marklist
 # using dictionaries to control data
 while True:
     print "\nPlease choose from  the following options:\n"
@@ -10,22 +10,23 @@ while True:
     print "Or enter 'q' to quit\n"
     option = raw_input("\t: ")
     if option == "1":
-        marklist.list_modules()
+        #marklist.list_modules()
+        1print "1"
     elif option == "2":
         filename = raw_input("\n\tPlease enter the file name to read from: ")
-        marklist.read_modules(filename)
+        #marklist.read_modules(filename)
         print "\n\tModules read in from file.\n"
     elif option == "3":
         module = raw_input("\n\t\tPlease enter the module code: ")
         credits = raw_input("\n\t\tPlease enter the credits for the module: ")
         mark = raw_input("\n\t\tPlease enter the mark for the module: ")
-        marklist.add_module(module,credits,mark)
+        #marklist.add_module(module,credits,mark)
         print "\n\tModule added.\n"
     elif option == "4":
         filename = raw_input("\n\t\tPlease enter the file name to write to: ")
-        marklist.write_modules(filename)
+        #marklist.write_modules(filename)
     elif option == "5":
-        marklist.reset_marklist()
+        #marklist.reset_marklist()
         print "\n\tMarklist reset.\n"
     elif option == "q":
         break
