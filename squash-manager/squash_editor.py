@@ -11,7 +11,7 @@ while True:
     option = raw_input("\t: ")
     if option == "1":
         #marklist.list_modules()
-        1print "1"
+        print "1"
     elif option == "2":
         filename = raw_input("\n\tPlease enter the file name to read from: ")
         #marklist.read_modules(filename)
