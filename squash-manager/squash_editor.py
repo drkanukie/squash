@@ -1,7 +1,7 @@
 # import marklist
 # using dictionaries to control data
 while True:
-    print "\nPlease choose from  the following options:\n"
+    print "\n  - Please choose from  the following options:\n"
     print "\t1 - Print out the current mark list\n"
     print "\t2 - Add marks from file\n"
     print "\t3 - Add a mark from the keyboard\n"
