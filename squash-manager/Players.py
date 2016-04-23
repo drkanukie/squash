@@ -1,6 +1,6 @@
 
 
-# This tests all the code modules in players
+# This tests all the code modules if players.py is run directly rather than as an import
 if __name__=="__main__":
 
     print __name__
