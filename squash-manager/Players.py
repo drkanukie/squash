@@ -1,20 +1,19 @@
+'''
+Code to maintain a list of players contained in players (a global variable)
+'''
+players = ["tim","ed"]
+keys = ["surname","forename","phone_number","email","division","points_previous","points_current"]
 
+def print_players():
+    """
+    Prints the global list of players
+    """
+    print "Players"
+    for player in players:
+        print "%11s" % (player)
 
 # This tests all the code modules if players.py is run directly rather than as an import
 if __name__=="__main__":
 
     print __name__
-    #list_modules()
-    #add_module("CMF100",10,23)
-    #list_modules()
-    #add_module("COF180",10,57)
-    #list_modules()
-    #print total_credits()
-    #print average_mark()
-    #delete_module("COF180")
-    #list_modules()
-    #read_modules('marks.txt')
-    #list_modules()
-    #write_modules('marksNew.txt')
-    #reset_marklist()
-    #list_modules()
+    print_players()
