@@ -1,5 +1,5 @@
 import marklist
-
+# using dictionaries to control data
 while True:
     print "\nPlease choose from  the following options:\n"
     print "\t1 - Print out the current mark list\n"
