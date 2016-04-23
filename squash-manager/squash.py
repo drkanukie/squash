@@ -11,6 +11,8 @@ while True:
     print "\t7 - To see division standings\n"
     print "Or enter 'q' to quit\n"
     option = raw_input("\t: ")
+   #8 possible outcomes
+
     if option == "1":
         #marklist.list_modules()
         print "1"
