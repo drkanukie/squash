@@ -2,11 +2,13 @@
 # using dictionaries to control data
 while True:
     print "\n  - Please choose from  the following options:\n"
-    print "\t1 - Print out the current mark list\n"
-    print "\t2 - Add marks from file\n"
-    print "\t3 - Add a mark from the keyboard\n"
-    print "\t4 - Write marks to file\n"
-    print "\t5 - Empty the mark list\n"
+    print "\t1 - To Print out the list of  players and all relevant information \n"
+    print "\t2 - To Print out list of players E-mail addresses\n"
+    print "\t3 - To print a list of players from division (1-7) \n"
+    print "\t4 - To add players to division\n"
+    print "\t5 - To delete players from a division\n"
+    print "\t6 - To edit information on players\n"
+    print "\t7 - To see division standings\n"
     print "Or enter 'q' to quit\n"
     option = raw_input("\t: ")
     if option == "1":
