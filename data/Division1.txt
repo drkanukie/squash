@@ -38,7 +38,7 @@ points_previous:0
 forename:Kevin
 surname:White
 phone_number:07825371981
-email:@anemailadress.com
+email:k.white@anemailadress.com
 division:1
 points_current:0
 points_previous:0
