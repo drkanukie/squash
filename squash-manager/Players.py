@@ -10,7 +10,14 @@ def print_players():
     """
     print "Players"
     for player in players:
-        print "%11s" % (player)
+        print "forename:%11s" % (player['forename'])
+        print "surname:%11s" % (player['surname'])
+        print "email:%11s" % (player['email'])
+        print "phone_number:%11s" % (player['phone_number'])
+        print "division:%9d" % (player['division'])
+        print "points_current:%9d" % (player['points_current'])
+        print "points_previous:%9d" % (player['points_previous'])
+        print
 
 def load_players(filename):
     """
@@ -45,6 +52,26 @@ def load_players(filename):
         players.append(player)
     f.close()
 
+def save_players(filename):
+    f = open(filename,'w')
+    for player in players:
+        line = "forename:" + player['forename'] + "\n"
+        f.write(line)
+        line = "surname:" + player['surname'] + "\n"
+        f.write(line)
+        line = "email:" + player['email'] + "\n"
+        f.write(line)
+        line = "phone_number:" + player['phone_number'] + "\n"
+        f.write(line)
+        line = "division:" + str(player['division']) + "\n"
+        f.write(line)
+        line = "points_current:" + str(player['points_current']) + "\n"
+        f.write(line)
+        line = "points_previous:"+str(player['points_previous']) + "\n"
+        f.write(line)
+        f.write("\n")
+    f.close()
+
 
 # This tests all the code modules if players.py is run directly rather than as an import
 if __name__=="__main__":
@@ -52,3 +79,4 @@ if __name__=="__main__":
     print __name__
     load_players("../data/division1.txt")
     print_players()
+    save_players("../data/new_division1.txt")
