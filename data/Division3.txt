@@ -6,48 +6,48 @@ surname:Pratchett
 email:t.pratchett@anemailadress.com
 phone_number:07823678988
 division:3
-points_current:
-points_previous:
+points_current:0
+points_previous:0
 
 forename:Eleanor
 surname:House
 email:e.house@anemailadress.com
 phone_number:07887965787
 division:3
-points_current:
-points_previous:
+points_current:0
+points_previous:0
 
 forename:Gregory
 surname:Davies
 email:g.davies@anemailadress.com
 phone_number:07832142123
 division:3
-points_current:
-points_previous:
+points_current:0
+points_previous:0
 
 forename:Tina
 surname:Turner
 email:t.turner@anemailadress.com
 phone_number:07821232544
 division:3
-points_current:
-points_previous:
+points_current:0
+points_previous:0
 
 forename:Sally
 surname:Stevens
 email:s.stevens@anemailadress.com
 phone_number:07897231432
 division:3
-points_current:
-points_previous:
+points_current:0
+points_previous:0
 
 forename:John
 surname:Lennon
 email:j.lennon@anemailadress.com
 phone_number:07123532143
 division:3
-points_current:
-points_previous:
+points_current:0
+points_previous:0
 
 
 
