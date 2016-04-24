@@ -4,6 +4,9 @@ Code to maintain a list of players contained in players (a global variable)
 players = []
 keys = ["surname","forename","phone_number","email","division","points_previous","points_current"]
 
+def reset_players():
+    del players[0:len(players)]
+
 def print_players():
     """
     Prints the global list of players
@@ -78,5 +81,13 @@ if __name__=="__main__":
 
     print __name__
     load_players("../data/division1.txt")
-    print_players()
     save_players("../data/new_division1.txt")
+    reset_players()
+    load_players("../data/division2.txt")
+    save_players("../data/new_division2.txt")
+    reset_players()
+    load_players("../data/division3.txt")
+    save_players("../data/new_division3.txt")
+    reset_players()
+    #print_players()
+
