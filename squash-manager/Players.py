@@ -81,13 +81,13 @@ if __name__=="__main__":
 
     print __name__
     load_players("../data/division1.txt")
-    save_players("../data/new_division1.txt")
+   # save_players("../data/new_division1.txt")
     reset_players()
     load_players("../data/division2.txt")
-    save_players("../data/new_division2.txt")
+    #save_players("../data/new_division2.txt")
     reset_players()
     load_players("../data/division3.txt")
-    save_players("../data/new_division3.txt")
+    #save_players("../data/new_division3.txt")
     reset_players()
     #print_players()
 
