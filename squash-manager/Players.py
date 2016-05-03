@@ -1,25 +1,28 @@
 '''
 Code to maintain a list of players contained in players (a global variable)
 '''
-# empty players list
+# global players list
 #
 players = []
 # players will be stored by division to make division tasks simpler
 #
-divisions = {'1':[],'2':[],'3':[],'4':[],'5':[],'6':[]}
+divisions = {}
 
-keys = ["surname","forename","phone_number","email","division_previous","division_current","points_previous","points_current"]
-unavailable = 0
-absent = -1
-
+#
+# codes for division_current values
+#
+div_unavailable = 0
+div_absent = -1
 
 def print_division(division_number):
     """
+    Prints a list of player names and emails for a specified division
     :param division_number the division to print the players from
     """
-    div = divisions[division_number]
-    for player in div:
-       print "%11s %11s %11s" % (player['forename'], player['surname'], player['email'])
+    print "DIVISION %1d\n==========" % (division_number)
+    for player in divisions[division_number]:
+       print "%s %s\n%s\n" % (player['forename'], player['surname'], player['email'])
+    print "\n"
 
 def print_emails():
     """
@@ -31,37 +34,46 @@ def print_emails():
 
 def reset_players():
     del players[0:len(players)]
+    divisions.clear()
 
 def print_players():
     """
     Prints the global list of players
     """
-    print "Players"
+    print "PLAYERS\n=======\n"
     for player in players:
-        print "forename:%11s" % (player['forename'])
-        print "surname:%11s" % (player['surname'])
-        print "email:%11s" % (player['email'])
-        print "phone_number:%11s" % (player['phone_number'])
-        print "division_current:%9d" % (player['division_current'])
-        print "points_current:%9d" % (player['points_current'])
-        print "division_previous:%9d" % (player['division_previous'])
-        print "points_previous:%9d" % (player['points_previous'])
-        print
+        print "forename: %s" % (player['forename'])
+        print "surname: %s" % (player['surname'])
+        print "email: %s" % (player['email'])
+        print "phone_number: %s" % (player['phone_number'])
+        print "division_current: %1d" % (player['division_current'])
+        print "points_current: %2d" % (player['points_current'])
+        print "division_previous: %1d" % (player['division_previous'])
+        print "points_previous: %2d\n" % (player['points_previous'])
 
 def load_players(filename):
     """
     :param filename: the filename to load
     :return: players
     """
+
+    # save players by divisions
+    divisions[1] = []
+    divisions[2] = []
+    divisions[3] = []
     player = {'forename':'','surname':'','phone_number':'','email':'','division_current':'','division_previous':'','points_previous':0,'points_current':0}
     f = open(filename,'r')
     for line in f:
         line = line.strip()
         line = line.split(':')
         if line[0] == "forename":
-            print "found new record " + line[1]
+            #DEBUG
+            #print "found new record " + line[1]
             if player['forename'] != '':
+                # add to players list
                 players.append(player)
+                # add to divisions list
+                divisions[player['division_current']].append(player)
             player = {'forename':'','surname':'','phone_number':'','email':'','division_current':'','division_previous':'','points_previous':0,'points_current':0}
             player['forename'] = line[1]
         if line[0] == "surname":
@@ -80,8 +92,12 @@ def load_players(filename):
             player['points_current'] = int(line[1])
 
     if player['forename'] != '':
+        # add last player
         players.append(player)
+        # add to divisions list
+        divisions[player['division_current']].append(player)
     f.close()
+
 
 def save_players(filename):
     """
@@ -117,6 +133,8 @@ if __name__=="__main__":
 
     # test load print and save single players file
     load_players("../data/players.txt")
-    print_players()
-    save_players("../data/players_backup.txt")
+    print_division(3)
+    print_division(1)
+    print_division(2)
+    #save_players("../data/players_backup.txt")
 
