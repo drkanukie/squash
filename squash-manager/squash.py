@@ -9,7 +9,7 @@ players.load_players(data_file)
 
 # using dictionaries to control data
 while True:
-    print "\n  - Please choose from  the following options:\n"
+    print "\n  - Please choose from the following options:\n"
     print "\t1 - To Print out the list of players and all relevant information \n"
     print "\t2 - To Print out list of players e-mail addresses\n"
     print "\t3 - To print a list of players from division (1-7) \n"
@@ -22,15 +22,13 @@ while True:
    #8 possible outcomes
 
     if option == "1":
-        #marklist.list_modules()
+        players.print_players()
         print "1"
     elif option == "2":
-        filename = raw_input("\n\tPlease enter the file name to read from: ")
-        #marklist.read_modules(filename)
-        print "\n\tModules read in from file.\n"
+        players.print_emails()
     elif option == "3":
         division = raw_input("\n\t\tPlease enter the division number: ")
-        print "\n\tModule added.\n"
+        players.print_division(division)
     elif option == "4":
         filename = raw_input("\n\t\tPlease enter the file name to write to: ")
         #marklist.write_modules(filename)

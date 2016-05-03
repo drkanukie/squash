@@ -6,13 +6,22 @@ Code to maintain a list of players contained in players (a global variable)
 players = []
 # players will be stored by division to make division tasks simpler
 #
-divisions = ['1':[],'2':[],'3':[],'4':[],'5':[],'6':[]]
+divisions = {'1':[],'2':[],'3':[],'4':[],'5':[],'6':[]}
 
 keys = ["surname","forename","phone_number","email","division_previous","division_current","points_previous","points_current"]
 unavailable = 0
 absent = -1
 
-def list_emails():
+
+def print_division(division_number):
+    """
+    :param division_number the division to print the players from
+    """
+    div = divisions[division_number]
+    for player in div:
+       print "%11s %11s %11s" % (player['forename'], player['surname'], player['email'])
+
+def print_emails():
     """
     List players name and email address email - better if printed by division
     :return: none
@@ -23,7 +32,7 @@ def list_emails():
 def reset_players():
     del players[0:len(players)]
 
-def list_players():
+def print_players():
     """
     Prints the global list of players
     """
@@ -44,7 +53,7 @@ def load_players(filename):
     :param filename: the filename to load
     :return: players
     """
-    player = {'forename':'','surname':'','phone_number':'','email':'','division_current':'','division_previous':'','points_previous':0,'points_current':0};
+    player = {'forename':'','surname':'','phone_number':'','email':'','division_current':'','division_previous':'','points_previous':0,'points_current':0}
     f = open(filename,'r')
     for line in f:
         line = line.strip()
@@ -53,7 +62,7 @@ def load_players(filename):
             print "found new record " + line[1]
             if player['forename'] != '':
                 players.append(player)
-            player = {'forename':'','surname':'','phone_number':'','email':'','division_current':'','division_previous':'','points_previous':0,'points_current':0};
+            player = {'forename':'','surname':'','phone_number':'','email':'','division_current':'','division_previous':'','points_previous':0,'points_current':0}
             player['forename'] = line[1]
         if line[0] == "surname":
             player['surname'] = line[1]
@@ -75,7 +84,7 @@ def load_players(filename):
     f.close()
 
 def save_players(filename):
-     """
+    """
     :param filename: the filename to save players data to
 
     """
@@ -108,6 +117,6 @@ if __name__=="__main__":
 
     # test load print and save single players file
     load_players("../data/players.txt")
-    list_players()
+    print_players()
     save_players("../data/players_backup.txt")
 
