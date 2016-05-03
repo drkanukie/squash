@@ -1,7 +1,10 @@
+# START FILE
+#
+
 forename:Joe
 surname:Bloggs
-email:j.bloggs@anemailadress.com
 phone_number:07896453423
+email:j.bloggs@anemailadress.com
 division_current:1
 points_current:0
 division_previous:0
@@ -9,8 +12,8 @@ points_previous:0
 
 forename:Sarah
 surname:Brown
-email:s.brown@anemailadress.com
 phone_number:07892547632
+email:s.brown@anemailadress.com
 division_current:1
 points_current:0
 division_previous:0
@@ -18,17 +21,18 @@ points_previous:0
 
 forename:Andrew
 surname:Smith
-email:a.smith@anemailadress.com
 phone_number:07684345432
+email:a.smith@anemailadress.com
 division_current:1
 points_current:0
 division_previous:0
 points_previous:0
 
+
 forename:Ray
 surname:Charles
-email:r.charles@anemailadress.com
 phone_number:07892536783
+email:r.charles@anemailadress.com
 division_current:1
 points_current:0
 division_previous:0
@@ -36,8 +40,8 @@ points_previous:0
 
 forename:Kevin
 surname:White
-email:@anemailadress.com
 phone_number:07825371981
+email:@anemailadress.com
 division_current:1
 points_current:0
 division_previous:0
@@ -166,7 +170,7 @@ email:n.devon@anemailadress.com
 phone_number:07186432143
 division_current:4
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Earl
@@ -175,7 +179,7 @@ email:e.griffin@anemailadress.com
 phone_number:07113932143
 division_current:4
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Samantha
@@ -184,7 +188,7 @@ email:s.smith@anemailadress.com
 phone_number:07823691488
 division_current:4
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Cathrine
@@ -193,7 +197,7 @@ email:c.peterson@anemailadress.com
 phone_number:07823548988
 division_current:4
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Kevin
@@ -202,7 +206,7 @@ email:k.fletcher@anemailadress.com
 phone_number:07823671238
 division_current:4
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Malcolm
@@ -211,7 +215,7 @@ email:m.reynolds@anemailaddress.com
 phone_number:07823754988
 division_current:5
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:John
@@ -220,8 +224,9 @@ email:j.brown@anemailaddress.com
 phone_number:07824358988
 division_current:5
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
+
 
 forename:Andrew
 surname:Jackson
@@ -229,7 +234,7 @@ email:a.jackson@anemailaddress.com
 phone_number:07806278988
 division_current:5
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Bob
@@ -238,7 +243,7 @@ email:j.jefferies@anemailaddress.com
 phone_number:07887678988
 division_current:5
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Felicity
@@ -247,7 +252,7 @@ email:f.winston@anemailaddress.com
 phone_number:07975678988
 division_current:5
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:John
@@ -256,7 +261,7 @@ email:j.locke@anemailaddress.com
 phone_number:07826698988
 division_current:6
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Juliet
@@ -265,7 +270,7 @@ email:j.burke@anemailaddress.com
 phone_number:07811278988
 division_current:6
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Michael
@@ -274,7 +279,7 @@ email:m.bluth@anemailaddress.com
 phone_number:07823556988
 division_current:6
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Sam
@@ -283,7 +288,7 @@ email:s.tyler@anemailaddress.com
 phone_number:07827788988
 division_current:6
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
 forename:Peter
@@ -292,15 +297,11 @@ email:p.bond@anemailaddress.com
 phone_number:07822378988
 division_current:6
 points_current:0
-division_previous:0
+division_previous: 0
 points_previous:0
 
-forename:Ed
-surname:Jones
-email:crazy.ed.jones@gmail.com
-phone_number:
-division_current:0
-points_current:0
-division_previous:0
-points_previous:0
+
+
+
+
 

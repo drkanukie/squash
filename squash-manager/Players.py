@@ -1,3 +1,4 @@
+import string
 '''
 Code to maintain a list of players contained in players (a global variable)
 '''
@@ -48,6 +49,45 @@ def print_emails():
 def reset_players():
     del players[0:len(players)]
     divisions.clear()
+
+def add_player(forename,surname,email,phone,division):
+    """
+    Adds a player to the league
+    :param forename: Players forname
+    :param surname: Players surname
+    :param email: Players email
+    :param phone: Players email
+    :param division: Players division
+    :return:
+    """
+    print ("add player stub")
+    player = {'forename':'','surname':'','phone_number':'','email':'','division_current':0,'division_previous':0,'points_previous':0,'points_current':0}
+    player['forename'] = forename
+    player['surname'] = surname
+    player['email'] = email
+    player['phone_number'] = phone
+    player['division_current'] = division
+    #
+    # add to player and divisions lists
+    players.append(player)
+    divisions[division].append(player)
+
+def delete_player(forename,surname):
+    """
+    Delete a player from the players and divisions - assumes names are unique
+    :param forename: Players forename to delete
+    :param surname: Players surname to delete
+    :return:
+    """
+    print ("delete player stub")
+    for player in players:
+        # lower case name match
+        if (string.lower(player['forename'])==string.lower(forename)) and (string.lower(player['surname'])==string.lower(surname)):
+            # delete this player from players list and divisions list
+            div = player['division_current']
+            players.remove(player)
+            divisions[div].remove(player)
+
 
 def print_players():
     """
@@ -169,11 +209,18 @@ if __name__=="__main__":
 
     # test load print and save single players file
     load_players("../data/players.txt")
-    print_emails()
-    print_division(div_absent)
-    print_division(div_unavailable)
-    print_rules()
-    print_signup()
+    add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
+    print_division(4)
+    #print_players()
+    delete_player("Tim","Jones")
+    print_division(4)
+    print_players()
+    #print_division(1)
+    #print_emails()
+    #print_division(div_absent)
+    #print_division(div_unavailable)
+    #print_rules()
+    #print_signup()
     #print_division(3)
     #print_division(1)
     #print_division(2)

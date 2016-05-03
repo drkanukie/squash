@@ -295,12 +295,3 @@ points_current:0
 division_previous:0
 points_previous:0
 
-forename:Ed
-surname:Jones
-email:crazy.ed.jones@gmail.com
-phone_number:
-division_current:0
-points_current:0
-division_previous:0
-points_previous:0
-
