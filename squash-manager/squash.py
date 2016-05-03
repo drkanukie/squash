@@ -1,9 +1,17 @@
-# import marklist
+import string
+import players
+
+data_file = "players.txt"
+modified = 0; # if anything has changed the data then prompt
+
+# always load the players.txt file
+players.load_players(data_file)
+
 # using dictionaries to control data
 while True:
     print "\n  - Please choose from  the following options:\n"
-    print "\t1 - To Print out the list of  players and all relevant information \n"
-    print "\t2 - To Print out list of players E-mail addresses\n"
+    print "\t1 - To Print out the list of players and all relevant information \n"
+    print "\t2 - To Print out list of players e-mail addresses\n"
     print "\t3 - To print a list of players from division (1-7) \n"
     print "\t4 - To add players to division\n"
     print "\t5 - To delete players from a division\n"
@@ -21,10 +29,7 @@ while True:
         #marklist.read_modules(filename)
         print "\n\tModules read in from file.\n"
     elif option == "3":
-        module = raw_input("\n\t\tPlease enter the module code: ")
-        credits = raw_input("\n\t\tPlease enter the credits for the module: ")
-        mark = raw_input("\n\t\tPlease enter the mark for the module: ")
-        #marklist.add_module(module,credits,mark)
+        division = raw_input("\n\t\tPlease enter the division number: ")
         print "\n\tModule added.\n"
     elif option == "4":
         filename = raw_input("\n\t\tPlease enter the file name to write to: ")
@@ -33,5 +38,11 @@ while True:
         #marklist.reset_marklist()
         print "\n\tMarklist reset.\n"
     elif option == "q":
+        # if the data has changed then prompt to save file
+        if modified > 0:
+            print "\nSave players changes y/n?\n"
+            option = raw_input("\t: ")
+            if string.lower(option) != "n":
+                players.save_players(data_file)
         break
 
