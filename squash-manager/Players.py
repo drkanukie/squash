@@ -15,6 +15,28 @@ divisions = {}
 div_unavailable = 0
 div_absent = -1
 
+def print_table(division_number):
+    """
+    :param division_number: the division table to print
+    :return:
+    """
+    print "-----------------------------------------------------------------"
+    print "|                        DIVISION %s                             |" % (division_number)
+    print "-----------------------------------------------------------------"
+    print "|   | NAME                        | A | B | C | D | E | F | TOT |"
+    print "-----------------------------------------------------------------"
+
+    
+    letter = 65
+    line = 80
+    # find longest string length
+
+    for player in divisions[division_number]:
+        print("| %s | %s %s") % (chr(letter), player['forename'], player['surname'])
+        print("|   | %s " %  player['email'] )
+        letter = letter + 1
+
+
 def print_division(division_number):
     """
     Prints a list of player names and emails for a specified division
@@ -209,12 +231,12 @@ if __name__=="__main__":
 
     # test load print and save single players file
     load_players("../data/players.txt")
-    add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
-    print_division(4)
+    #add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
+    print_table(1)
     #print_players()
-    delete_player("Tim","Jones")
-    print_division(4)
-    print_players()
+    #delete_player("Tim","Jones")
+    #print_division(4)
+    #print_players()
     #print_division(1)
     #print_emails()
     #print_division(div_absent)
