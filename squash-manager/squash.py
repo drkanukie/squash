@@ -10,7 +10,7 @@ players.load_players(data_file)
 # using dictionaries to control data
 while True:
     print "\n  - Please choose from the following options:\n"
-    print "\t1 - To Print out the list of players and all relevant information \n"
+    print "\t1 - To Print out the list of players and all relevant information for notive board\n"
     print "\t2 - To Print out list of players e-mail addresses\n"
     print "\t3 - To print a list of players from division (1-6) \n"
     print "\t4 - To add players to division\n"
@@ -18,12 +18,21 @@ while True:
     print "\t6 - To edit information on players\n"
     print "\t7 - To see division standings\n"
     print "\t8 - Enter player points\n"
+    print "\t9 - Rollup divisions\n"
     print "Or enter 'q' to quit\n"
     option = raw_input("\t: ")
    #8 possible outcomes
 
     if option == "1":
-        players.print_players()
+        # TODO title and points systems
+        #
+        players.print_title()
+        for t in range(1,7):
+            # pretty print divisions
+            players.print_table(t)
+        players.print_points()
+        players.print_rules()
+        players.print_signup()
     elif option == "2":
         players.print_emails()
     elif option == "3":
@@ -99,7 +108,7 @@ while True:
 
             # prompt showing current values
             # null string '' no changes
-            # -1 no changes
+            # -2 no changes
             email = raw_input("\n\t\tEmail ("+ info['email']  +") : ")
             phone_number = raw_input("\n\t\tPnone number  ("+ info['phone_number']  +") : ")
 
@@ -147,6 +156,20 @@ while True:
             players.edit_player(player['forename'],player['surname'],'','',-2,points+player['points_current'],-2,-2)
             points = 0
 
+        modified = 1
+
+    elif option == "9":
+        # update divisons
+        try:
+            num_promote = int(raw_input("\n\t\tNumber players to promote: "))
+        except:
+            num_promote = 2
+        print "\nUpdate divisions y/n?\n"
+        option = raw_input("\t: ")
+        if string.lower(option) == "y":
+            players.update_divisions(num_promote)
+
+        modified = 1
 
     elif option == "q":
         # if the data has changed then prompt to save file
@@ -154,6 +177,6 @@ while True:
             print "\nSave players changes y/n?\n"
             option = raw_input("\t: ")
             if string.lower(option) != "n":
-                players.save_players("../data/xplayers.txt")
+                players.save_players("../data/players.txt")
         break
 

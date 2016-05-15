@@ -97,6 +97,14 @@ points_current:2
 division_previous:0
 points_previous:0
 
+forename:John
+surname:White
+email:j.white@anemailaddress.com
+phone_number:07854358988
+division_current:2
+points_current:0
+division_previous:0
+points_previous:0
 
 forename:Tim
 surname:Pratchett

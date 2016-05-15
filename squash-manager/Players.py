@@ -1,4 +1,5 @@
 import string
+import copy
 '''
 Code to maintain a list of players contained in players (a global variable)
 '''
@@ -19,6 +20,17 @@ div_unavailable = 0
 div_absent = -1
 
 
+def print_title():
+    print "STAFF SQUASH LEAGUE"
+    print "ALL GAMES MUST BE PLAYED BY 9 am Wed 27th APRIL 2016"
+    print "NEW PLAYERS WELCOME"
+    print "JUST LEAVE CONTACT DETAILS ON THE BOTTOM PAGE (PEN ABOVE)"
+
+def print_points():
+    print "Points scoring system - Play until one player has won three (3) games"
+    print "***** TODO NICE TABLE ******"
+
+
 def update_divisions(number_promote):
     """
 
@@ -28,33 +40,28 @@ def update_divisions(number_promote):
     def getKey(item):
         return item['points_current']
 
-    edit_divisions = divisions
+    # copy divisons to stop churn as we edit
+    edit_divisions = copy.deepcopy(divisions)
     for d in range(1,7):
-        print " d= %d " % (d)
+        # debug print " d= %d " % (d)
         div = edit_divisions[d]
-         # sort divisions for promotion & demotion
+        # sort divisions for promotion & demotion
         divp = sorted(div, key=getKey, reverse=True)
         divd = sorted(div, key=getKey)
-        #print divp
-        print divd
+        # debug print divp
+        # debug print divd
 
         # promote top n up
-        if d == 1:
-            # no promotion
-            print "no promote"
-        else:
+        if d != 1:
             # promoting n players up
-
             for p in range(0,number_promote):
                 player = divp[p]
                 print "promote %s %s" % (player['forename'],player['surname'])
-                #edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
+                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
 
         # demote top n down
-        if d == 6:
-            #no demotion
-            print "no demote"
-        else:
+        if d != 6:
+            # demoting n players down
             for p in range(0,number_promote):
                 player = divd[p]
                 print "demote %s %s" % (player['forename'],player['surname'])
@@ -383,6 +390,10 @@ if __name__=="__main__":
     load_players("../data/test-players.txt")
     update_divisions(2)
     print_division(1)
+    print_division(2)
+    print_division(3)
+    print_division(4)
+    print_division(5)
     print_division(6)
 
     #print_players()
