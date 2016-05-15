@@ -8,6 +8,9 @@ players = []
 # players will be stored by division to make division tasks simpler
 #
 divisions = {}
+#
+# max size of a division
+max_division = 6
 
 #
 # codes for division_current values
@@ -20,21 +23,60 @@ def print_table(division_number):
     :param division_number: the division table to print
     :return:
     """
-    print "-----------------------------------------------------------------"
-    print "|                        DIVISION %s                             |" % (division_number)
-    print "-----------------------------------------------------------------"
-    print "|   | NAME                        | A | B | C | D | E | F | TOT |"
-    print "-----------------------------------------------------------------"
 
-    
+    longest = 0
     letter = 65
-    line = 80
-    # find longest string length
+    row = 0
+    division = divisions[division_number]
 
-    for player in divisions[division_number]:
-        print("| %s | %s %s") % (chr(letter), player['forename'], player['surname'])
-        print("|   | %s " %  player['email'] )
+    # find longest string
+
+    table_rows = ["| / |   |   |   |   |   |     |",
+                  "|   | / |   |   |   |   |     |",
+                  "|   |   | / |   |   |   |     |",
+                  "|   |   |   | / |   |   |     |",
+                  "|   |   |   |   | / |   |     |",
+                  "|   |   |   |   |   | / |     |",
+                  "|   |   |   |   |   |   |     |"]
+
+
+    # find longest string length from names & emails
+    for player in division:
+        name = len(player['forename']) + len(player['surname']) + 1
+
+        if name > longest:
+            longest = name
+
+        name = len(player['email']) + 1
+        # debug print "%s %d" % (name, longest)
+
+        if name > longest:
+             longest = name
+
+    divider = ''.ljust(longest, '-')
+    print "%s--------------------------------------" % (divider)
+    print "|     %-*s                               |" % (longest,"DIVISION " + str(division_number))
+    print "%s--------------------------------------" % (divider)
+    print "|   | %-*s | A | B | C | D | E | F | TOT |" % (longest,"NAME")
+    print "%s--------------------------------------" % (divider)
+
+
+    for player in division:
+        name = player['forename']+ ' ' + player['surname']
+        print "| %s | %-*s %s" % (chr(letter),longest,name,table_rows[row])
+        print "|   | %-*s %s" % (longest,player['email'],table_rows[row])
+        print "%s--------------------------------------" % (divider)
         letter = letter + 1
+        row = row + 1
+
+    # print out blank rows for partial divisions
+    if len(division) < max_division:
+        # debug print " missing %d" % (len(division))
+        for i in range(len(division),max_division):
+            print "| %s | %-*s %s" % (chr(letter),longest,' ',table_rows[6])
+            print "|   | %-*s %s" % (longest,' ',table_rows[6])
+            print "%s--------------------------------------" % (divider)
+            letter = letter + 1
 
 
 def print_division(division_number):
@@ -232,7 +274,7 @@ if __name__=="__main__":
     # test load print and save single players file
     load_players("../data/players.txt")
     #add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
-    print_table(1)
+    print_table(6)
     #print_players()
     #delete_player("Tim","Jones")
     #print_division(4)
