@@ -109,6 +109,37 @@ def print_emails():
     for d in range(1,7):
         print_division(d)
 
+def edit_player(forename,surname,email,phone_number,division_current,points_current,division_previous,points_previous):
+    """
+    edit player info
+    :param forename:
+    :param surname:
+    :param email:
+    :param phone_number:
+    :param division_current:
+    :param points_current:
+    :param division_previous:
+    :param points_previous:
+    :return:
+    """
+
+    for player in players:
+        # lower case name match
+        if (string.lower(player['forename'])==string.lower(forename)) and (string.lower(player['surname'])==string.lower(surname)):
+            # only save valid edit
+            if email != '':
+                player['email'] = email
+            if phone_number != '':
+                player['phone_number'] = phone_number
+            if division_current != -1:
+                player['division_current'] = division_current
+            if points_current != -1:
+                player['points_current'] = points_current
+            if division_previous != -1:
+                player['division_previous'] = division_previous
+            if points_previous != -1:
+                player['points_current'] = points_previous
+
 
 def reset_players():
     del players[0:len(players)]
@@ -135,6 +166,30 @@ def add_player(forename,surname,email,phone,division):
     # add to player and divisions lists
     players.append(player)
     divisions[division].append(player)
+
+def get_player_info(forename,surname):
+    """
+    get the players info  - assumes names are unique
+    :param forename: Players forename to get info
+    :param surname: Players surname to get info
+    :return: player info as dict or empty dict if not found
+    """
+
+    info = {}
+    for player in players:
+        # lower case name match
+        if (string.lower(player['forename'])==string.lower(forename)) and (string.lower(player['surname'])==string.lower(surname)):
+            # get info for this player
+            info['forename'] = player['forename']
+            info['surname'] = player['surname']
+            info['email'] = player['email']
+            info['phone_number'] = player['phone_number']
+            info['division_current'] = player['division_current']
+            info['points_current'] = player['points_current']
+            info['division_previous'] = player['division_previous']
+            info['points_previous'] = player['points_previous']
+
+    return info
 
 def delete_player(forename,surname):
     """
@@ -274,7 +329,8 @@ if __name__=="__main__":
     # test load print and save single players file
     load_players("../data/players.txt")
     #add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
-    print_table(6)
+    #print_table(1)
+    print "%s" % get_player_info("Sarah","Brown")['email']
     #print_players()
     #delete_player("Tim","Jones")
     #print_division(4)
