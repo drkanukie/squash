@@ -17,6 +17,7 @@ while True:
     print "\t5 - To delete players from a division\n"
     print "\t6 - To edit information on players\n"
     print "\t7 - To see division standings\n"
+    print "\t8 - Enter player points\n"
     print "Or enter 'q' to quit\n"
     option = raw_input("\t: ")
    #8 possible outcomes
@@ -104,25 +105,27 @@ while True:
 
             # catch exceptions for blank input
             try:
+                print "use 0 for unavailable this round"
+                print "use -1 as away until further notice"
                 division_current = int(raw_input("\n\t\tCurrent division ("+ str(info['division_current'])  +") : "))
             except:
-                # null value pass -1 as no changes
-                division_current = -1
+                # null value pass -2 as 0 & -1 are valid inputs
+                division_current = -2
 
             try:
                 points_current = int(raw_input("\n\t\tCurrent points ("+ str(info['points_current'])  +") : "))
             except:
-                points_current = -1
+                points_current = -2
 
             try:
                 division_previous = int(raw_input("\n\t\tPrevious division ("+ str(info['division_previous'])  +") : "))
             except:
-                division_previous = -1
+                division_previous = -2
 
             try:
                 points_previous = int(raw_input("\n\t\tPrevious points ("+ str(info['points_previous'])  +") : "))
             except:
-                points_previous = -1
+                points_previous = -2
 
             players.edit_player(forename,surname,email,phone_number,division_current,points_current,division_previous,points_previous)
             # trigger save on exit
@@ -131,12 +134,26 @@ while True:
         else:
             print "\nPLAYER %s %s NOT FOUND\n" % (forename, surname)
 
+    elif option == "8":
+        # update points player
+        points = 0
+        player_list = players.get_players()
+        for player in player_list:
+            while points == 0:
+                try:
+                    points = int(raw_input("\n\t\tPoints this round for " + player['forename'] + " " + player['surname'] + ": "))
+                except:
+                    points = 0
+            players.edit_player(player['forename'],player['surname'],'','',-2,points+player['points_current'],-2,-2)
+            points = 0
+
+
     elif option == "q":
         # if the data has changed then prompt to save file
         if modified > 0:
             print "\nSave players changes y/n?\n"
             option = raw_input("\t: ")
             if string.lower(option) != "n":
-                players.save_players("../data/players.txt")
+                players.save_players("../data/xplayers.txt")
         break
 

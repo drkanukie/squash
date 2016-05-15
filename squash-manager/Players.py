@@ -18,6 +18,55 @@ max_division = 6
 div_unavailable = 0
 div_absent = -1
 
+
+def update_divisions(number_promote):
+    """
+
+    :param number_promote: how many to promote or relegate
+    :return:
+    """
+    def getKey(item):
+        return item['points_current']
+
+    edit_divisions = divisions
+    for d in range(1,7):
+        print " d= %d " % (d)
+        div = edit_divisions[d]
+         # sort divisions for promotion & demotion
+        divp = sorted(div, key=getKey, reverse=True)
+        divd = sorted(div, key=getKey)
+        #print divp
+        print divd
+
+        # promote top n up
+        if d == 1:
+            # no promotion
+            print "no promote"
+        else:
+            # promoting n players up
+
+            for p in range(0,number_promote):
+                player = divp[p]
+                print "promote %s %s" % (player['forename'],player['surname'])
+                #edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
+
+        # demote top n down
+        if d == 6:
+            #no demotion
+            print "no demote"
+        else:
+            for p in range(0,number_promote):
+                player = divd[p]
+                print "demote %s %s" % (player['forename'],player['surname'])
+                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d+1,0,d,player['points_current'])
+
+
+def get_players():
+    """
+    :return: players
+    """
+    return players
+
 def print_table(division_number):
     """
     :param division_number: the division table to print
@@ -37,7 +86,7 @@ def print_table(division_number):
                   "|   |   |   | / |   |   |     |",
                   "|   |   |   |   | / |   |     |",
                   "|   |   |   |   |   | / |     |",
-                  "|   |   |   |   |   |   |     |"]
+                  "|   |   |   |   |   | / |     |"]
 
 
     # find longest string length from names & emails
@@ -131,14 +180,18 @@ def edit_player(forename,surname,email,phone_number,division_current,points_curr
                 player['email'] = email
             if phone_number != '':
                 player['phone_number'] = phone_number
-            if division_current != -1:
-                player['division_current'] = division_current
-            if points_current != -1:
+            if division_current != -2:
+                if player['division_current'] != division_current:
+                    # need to shuffle divisons
+                    divisions[player['division_current']].remove(player)
+                    player['division_current'] = division_current
+                    divisions[division_current].append(player)
+            if points_current != -2:
                 player['points_current'] = points_current
-            if division_previous != -1:
+            if division_previous != -2:
                 player['division_previous'] = division_previous
-            if points_previous != -1:
-                player['points_current'] = points_previous
+            if points_previous != -2:
+                player['points_previous'] = points_previous
 
 
 def reset_players():
@@ -327,10 +380,19 @@ if __name__=="__main__":
     print __name__
 
     # test load print and save single players file
-    load_players("../data/players.txt")
+    load_players("../data/test-players.txt")
+    update_divisions(2)
+    print_division(1)
+    print_division(6)
+
+    #print_players()
     #add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
-    #print_table(1)
-    print "%s" % get_player_info("Sarah","Brown")['email']
+    #print_table(5)
+    #print "%s" % get_player_info("Sarah","Brown")['email']
+    #print_division(1)
+    #edit_player("Sarah","Brown","sillybilly@gmail.com","123456",2,0,1,3)
+    #print_division(1)
+    #print_division(2)
     #print_players()
     #delete_player("Tim","Jones")
     #print_division(4)
