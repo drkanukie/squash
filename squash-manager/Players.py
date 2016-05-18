@@ -260,15 +260,6 @@ def edit_player(forename,surname,email,phone_number,division_current,points_curr
             if points_previous != edit_none:
                 player['points_previous'] = points_previous
 
-
-def reset_players():
-    """
-    Test function to clear players list
-    :return:
-    """
-    del players[0:len(players)]
-    divisions.clear()
-
 def add_player(forename,surname,email,phone,division):
     """
     Adds a player to the league division specified
@@ -324,7 +315,6 @@ def delete_player(forename,surname):
     :param surname: Players surname to delete
     :return:
     """
-
     for player in players:
         # lower case name match
         if (string.lower(player['forename'])==string.lower(forename)) and (string.lower(player['surname'])==string.lower(surname)):
@@ -333,26 +323,15 @@ def delete_player(forename,surname):
             players.remove(player)
             divisions[div].remove(player)
 
-
-def print_players():
-    """
-    Prints the global list of players
-    """
-    print "PLAYERS\n=======\n"
-    for player in players:
-        print "forename: %s" % (player['forename'])
-        print "surname: %s" % (player['surname'])
-        print "email: %s" % (player['email'])
-        print "phone_number: %s" % (player['phone_number'])
-        print "division_current: %1d" % (player['division_current'])
-        print "points_current: %2d" % (player['points_current'])
-        print "division_previous: %1d" % (player['division_previous'])
-        print "points_previous: %2d\n" % (player['points_previous'])
+##
+## File storage
+##
 
 def load_players(filename):
     """
-    :param filename: the filename to load
-    :return: players
+    Load the players from the specified filename into the global players and divisions
+    :param filename: The filename to load
+    :return:
     """
 
     # save players by divisions
@@ -373,8 +352,7 @@ def load_players(filename):
         line = line.strip()
         line = line.split(':')
         if line[0] == "forename":
-            #DEBUG
-            #print "found new record " + line[1]
+            #debug print "found new record " + line[1]
             if player['forename'] != '':
                 # add to players list
                 players.append(player)
@@ -407,8 +385,8 @@ def load_players(filename):
 
 def save_players(filename):
     """
+    Save the players list to the specified file
     :param filename: the filename to save players data to
-
     """
     f = open(filename,'w')
     for player in players:
@@ -431,7 +409,30 @@ def save_players(filename):
         f.write("\n")
     f.close()
 
+##
+## Test
+##
+def print_players():
+    """
+    Test function prints the global list of players
+    """
+    print "PLAYERS\n=======\n"
+    for player in players:
+        print "forename: %s surname: %s" % (player['forename'],player['surname'])
+        print "email: %s" % (player['email'])
+        print "phone_number: %s" % (player['phone_number'])
+        print "division_current: %1d" % (player['division_current'])
+        print "points_current: %2d" % (player['points_current'])
+        print "division_previous: %1d" % (player['division_previous'])
+        print "points_previous: %2d\n" % (player['points_previous'])
 
+def reset_players():
+    """
+    Test function to clear players list
+    :return:
+    """
+    del players[0:len(players)]
+    divisions.clear()
 
 # This tests all the code modules if players.py is run directly rather than as an import
 if __name__=="__main__":
