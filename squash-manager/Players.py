@@ -30,6 +30,19 @@ edit_none = -2
 ## Print functions
 ##
 
+def print_notice():
+    """
+    Print the noticeboard print out
+    :return:
+    """
+    print_title()
+    for t in range(1,7):
+        # pretty print divisions tables
+        print_table(t)
+    print_points()
+    print_rules()
+    print_signup()
+
 def print_table(division_number):
     """
     Prints out a players match table for the specified division
@@ -138,6 +151,19 @@ def print_signup():
 ##
 ## Email functions
 ##
+
+def print_standing(division_number):
+    division = divisions[division_number]
+    if len(division) > 0:
+        print "DIVISION %1d STANDING\n===================" % (division_number)
+        # sort on points
+        def getKey(item):
+            return item['points_current']
+
+        division = sorted(division, key=getKey, reverse=True)
+        for player in division:
+            print "%s %s %d points" % (player['forename'], player['surname'], player['points_current'])
+        print
 
 def print_division(division_number):
     """
@@ -441,15 +467,33 @@ if __name__=="__main__":
 
     # test load print and save single players file
     load_players(players_file)
-    update_divisions(2)
+    print_players()
+    #
+    # Test print functions
+    #
+    print_emails()
     print_division(1)
-    print_division(2)
-    print_division(3)
-    print_division(4)
-    print_division(5)
-    print_division(6)
+    print_notice()
+    # add points for divison 1
+    edit_player("Joe","Bloggs","","",edit_none,3,edit_none,edit_none)
+    edit_player("Sarah","Brown","","",edit_none,8,edit_none,edit_none)
+    edit_player("Andrew","Smith","","",edit_none,6,edit_none,edit_none)
+    edit_player("Ray","Charles","","",edit_none,12,edit_none,edit_none)
+    edit_player("Kevin","White","","",edit_none,5,edit_none,edit_none)
+    print_standing(1)
 
-    #print_players()
+    #
+    # Test read functions
+    #
+    print get_players()
+    print get_none()
+    print get_player_info("John","Brown")
+
+
+    #update_divisions(2)
+
+
+
     #add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
     #print_table(5)
     #print "%s" % get_player_info("Sarah","Brown")['email']

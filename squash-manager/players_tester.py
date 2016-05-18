@@ -2,6 +2,7 @@ import players
 
 help(players)
 # print
+help(players.print_notice)
 help(players.print_table)
 help(players.print_title)
 help(players.print_points)
@@ -10,6 +11,7 @@ help(players.print_signup)
 # email
 help(players.print_division)
 help(players.print_emails)
+help(players.print_standing)
 # read
 help(players.get_players)
 help(players.get_player_info)

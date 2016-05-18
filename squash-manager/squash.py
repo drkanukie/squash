@@ -1,8 +1,14 @@
-import string
 import players
 
+#
+# default data file
 data_file = "../data/players.txt"
-modified = 0; # if anything has changed the data then prompt
+#
+# null edit value
+edit_none = players.edit_none
+#
+# if anything has changed the data then prompt
+modified = 0;
 
 # always load the players.txt file
 players.load_players(data_file)
@@ -10,7 +16,7 @@ players.load_players(data_file)
 # using dictionaries to control data
 while True:
     print "\n  - Please choose from the following options:\n"
-    print "\t1 - To Print out the list of players and all relevant information for notive board\n"
+    print "\t1 - To Print out the list of players and all relevant information for notice board\n"
     print "\t2 - To Print out list of players e-mail addresses\n"
     print "\t3 - To print a list of players from division (1-6) \n"
     print "\t4 - To add players to division\n"
@@ -21,28 +27,34 @@ while True:
     print "\t9 - Rollup divisions\n"
     print "Or enter 'q' to quit\n"
     option = raw_input("\t: ")
-   #8 possible outcomes
+   #9 possible outcomes & quit
 
     if option == "1":
-        # TODO title and points systems
         #
-        players.print_title()
-        for t in range(1,7):
-            # pretty print divisions
-            players.print_table(t)
-        players.print_points()
-        players.print_rules()
-        players.print_signup()
+        # Print the league tables for the notice board
+        #
+        players.print_notice()
+
     elif option == "2":
+        #
+        # Print all players names and emails
+        #
         players.print_emails()
+
     elif option == "3":
+        #
+        # Print contact details for players for a division
+        #
         division = raw_input("\n\t\tPlease enter the division number: ")
         try:
             players.print_division(int(division))
         except:
             print("Division not found")
+
     elif option == "4":
-        # enter new player
+        #
+        # Enter new player
+        #
         forename = ''
         surname = ''
         email = ''
@@ -72,7 +84,9 @@ while True:
         modified = 1
 
     elif option == "5":
-        # delete player
+        #
+        # Delete specified player
+        #
         forename = ''
         surname = ''
         print ("* required values")
@@ -85,7 +99,9 @@ while True:
         modified = 1
 
     elif option == "6":
-        # edit player
+        #
+        # Edit player info
+        #
         forename = ''
         surname = ''
         email = ''
@@ -100,7 +116,7 @@ while True:
             forename = raw_input("\n\t\t*First name: ")
         while surname == '':
             surname = raw_input("\n\t\t*Surname name: ")
-        # use names as key as easier to remember than emil but that is unique
+        # use names as key as easier to remember than email but that is unique
         info = players.get_player_info(forename,surname)
 
         # no found
@@ -108,7 +124,7 @@ while True:
 
             # prompt showing current values
             # null string '' no changes
-            # -2 no changes
+            # edit_none no changes
             email = raw_input("\n\t\tEmail ("+ info['email']  +") : ")
             phone_number = raw_input("\n\t\tPnone number  ("+ info['phone_number']  +") : ")
 
@@ -118,23 +134,23 @@ while True:
                 print "use -1 as away until further notice"
                 division_current = int(raw_input("\n\t\tCurrent division ("+ str(info['division_current'])  +") : "))
             except:
-                # null value pass -2 as 0 & -1 are valid inputs
-                division_current = -2
+                # null value pass edit_none as 0 & -1 are valid inputs
+                division_current = edit_none
 
             try:
                 points_current = int(raw_input("\n\t\tCurrent points ("+ str(info['points_current'])  +") : "))
             except:
-                points_current = -2
+                points_current = edit_none
 
             try:
                 division_previous = int(raw_input("\n\t\tPrevious division ("+ str(info['division_previous'])  +") : "))
             except:
-                division_previous = -2
+                division_previous = edit_none
 
             try:
                 points_previous = int(raw_input("\n\t\tPrevious points ("+ str(info['points_previous'])  +") : "))
             except:
-                points_previous = -2
+                points_previous = edit_none
 
             players.edit_player(forename,surname,email,phone_number,division_current,points_current,division_previous,points_previous)
             # trigger save on exit
@@ -143,23 +159,39 @@ while True:
         else:
             print "\nPLAYER %s %s NOT FOUND\n" % (forename, surname)
 
+    elif option == "7":
+        #
+        # Print vision standings
+        #
+        division = raw_input("\n\t\tPlease enter the division number: ")
+        try:
+            players.print_standing(int(division))
+        except:
+            print("Division not found")
+
     elif option == "8":
-        # update points player
+        #
+        # Update points for all players
+        #
         points = 0
         player_list = players.get_players()
         for player in player_list:
+            # get a valid points value
             while points == 0:
                 try:
                     points = int(raw_input("\n\t\tPoints this round for " + player['forename'] + " " + player['surname'] + ": "))
                 except:
+                    # default to zero if bad input
                     points = 0
-            players.edit_player(player['forename'],player['surname'],'','',-2,points+player['points_current'],-2,-2)
+            players.edit_player(player['forename'],player['surname'],'','',edit_none,points+player['points_current'],edit_none,edit_none)
             points = 0
-
+        # trigger save on exit
         modified = 1
 
     elif option == "9":
-        # update divisons
+        #
+        # Update divisions get the number of players to promote
+        #
         try:
             num_promote = int(raw_input("\n\t\tNumber players to promote: "))
         except:
@@ -177,6 +209,7 @@ while True:
             print "\nSave players changes y/n?\n"
             option = raw_input("\t: ")
             if string.lower(option) != "n":
-                players.save_players("../data/players.txt")
+                # save the file if not answered n
+                players.save_players(data_file)
         break
 
