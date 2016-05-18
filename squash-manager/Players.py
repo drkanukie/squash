@@ -1,11 +1,15 @@
 import string
 import copy
-'''
-Code to maintain a list of players contained in players (a global variable)
-'''
-# global players list
+
+"""
+Code to maintain a list of squash players contained in players (a global variable) and saved to a text file players.txt
+"""
+
+# global players list & storage file
 #
 players = []
+players_file = "../data/players.txt"
+
 # players will be stored by division to make division tasks simpler
 #
 divisions = {}
@@ -13,69 +17,22 @@ divisions = {}
 # max size of a division
 max_division = 6
 
-#
-# codes for division_current values
+# special codes for division_current values
 #
 div_unavailable = 0
 div_absent = -1
 
+# code for null edit value
+#
+edit_none = -2
 
-def print_title():
-    print "STAFF SQUASH LEAGUE"
-    print "ALL GAMES MUST BE PLAYED BY 9 am Wed 27th APRIL 2016"
-    print "NEW PLAYERS WELCOME"
-    print "JUST LEAVE CONTACT DETAILS ON THE BOTTOM PAGE (PEN ABOVE)"
-
-def print_points():
-    print "Points scoring system - Play until one player has won three (3) games"
-    print "***** TODO NICE TABLE ******"
-
-
-def update_divisions(number_promote):
-    """
-
-    :param number_promote: how many to promote or relegate
-    :return:
-    """
-    def getKey(item):
-        return item['points_current']
-
-    # copy divisons to stop churn as we edit
-    edit_divisions = copy.deepcopy(divisions)
-    for d in range(1,7):
-        # debug print " d= %d " % (d)
-        div = edit_divisions[d]
-        # sort divisions for promotion & demotion
-        divp = sorted(div, key=getKey, reverse=True)
-        divd = sorted(div, key=getKey)
-        # debug print divp
-        # debug print divd
-
-        # promote top n up
-        if d != 1:
-            # promoting n players up
-            for p in range(0,number_promote):
-                player = divp[p]
-                print "promote %s %s" % (player['forename'],player['surname'])
-                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
-
-        # demote top n down
-        if d != 6:
-            # demoting n players down
-            for p in range(0,number_promote):
-                player = divd[p]
-                print "demote %s %s" % (player['forename'],player['surname'])
-                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d+1,0,d,player['points_current'])
-
-
-def get_players():
-    """
-    :return: players
-    """
-    return players
+##
+## Print functions
+##
 
 def print_table(division_number):
     """
+    Prints out a players match table for the specified division
     :param division_number: the division table to print
     :return:
     """
@@ -85,7 +42,7 @@ def print_table(division_number):
     row = 0
     division = divisions[division_number]
 
-    # find longest string
+    # table rows are preformatted - empty rows use the same values
 
     table_rows = ["| / |   |   |   |   |   |     |",
                   "|   | / |   |   |   |   |     |",
@@ -96,19 +53,20 @@ def print_table(division_number):
                   "|   |   |   |   |   | / |     |"]
 
 
-    # find longest string length from names & emails
+    # find longest string length from names & emails in this division - use longest string for formatting space
     for player in division:
+        # compare names and email for length
         name = len(player['forename']) + len(player['surname']) + 1
-
         if name > longest:
+            # name longer
             longest = name
 
         name = len(player['email']) + 1
-        # debug print "%s %d" % (name, longest)
-
         if name > longest:
+            # email longer
              longest = name
 
+    # generate dynamic length divider
     divider = ''.ljust(longest, '-')
     print "%s--------------------------------------" % (divider)
     print "|     %-*s                               |" % (longest,"DIVISION " + str(division_number))
@@ -134,10 +92,56 @@ def print_table(division_number):
             print "%s--------------------------------------" % (divider)
             letter = letter + 1
 
+def print_title():
+    """
+    Prints the title for the squash table print out
+    :return:
+    """
+    print "STAFF SQUASH LEAGUE"
+    print "ALL GAMES MUST BE PLAYED BY 9 am Wed 27th APRIL 2016"
+    print "NEW PLAYERS WELCOME"
+    print "JUST LEAVE CONTACT DETAILS ON THE BOTTOM PAGE (PEN ABOVE)"
+
+def print_points():
+    """
+    Prints the points scoring table for the squash table print out
+    :return:
+    """
+    print "Points scoring system - Play until one player has won three (3) games"
+    print "***** TODO NICE TABLE ******"
+
+def print_rules():
+    """
+    Prints the squash league rules for the players sheet
+    :return:
+    """
+    print("League rules\n============")
+    print("1. If a player is unable to turn up to play, for any reason, by the end of the round date, their opponent can claim 4 points.")
+    print("2. At least 2 matches must be played to stay in the divisions.")
+    print("3. A player who has the maximum or near the maximum points after the finishing round date may be promoted.")
+    print("4. ANYONE WISHING TO JOIN THE DIVISIONS SHOULD WRITE THEIR NAME IN THE BLANK SPACE OF DIVISIONS 4, 5 or 6")
+    print("   AND PLAY AS MANY MATCHES AS POSSIBLE. IF THESE SPACES ARE FILLED OR IF TOO LITTLE TIME REMAINS BEFORE ")
+    print("   THE END OF THE CURRENT ROUND PLEASE WRITE YOUR NAME AND CONTACT NUMBER BELOW OR CONTACT THE LEAGUE ")
+    print("   ORGANISER, JOHN DOE AT j.doe@anemailaddress.com. IF POSSIBLE, INDICATE THE LEVEL AT WHICH YOU WOULD")
+    print("   LIKE TO ENTER. ANY SUGGESTIONS ARE WELCOME. ENCOURAGE OLD HANDS OR NEW ARRIVALS TO JOIN.")
+
+def print_signup():
+    """
+    Prints the sign up box for the league
+    :return:
+    """
+    print("\nList of players wishing to join the league:")
+    print("NAME		tel no.		email				 Division?")
+    print("______________________________________________________")
+
+
+##
+## Email functions
+##
 
 def print_division(division_number):
     """
-    Prints a list of player names and emails for a specified division
+    Prints a list of player names and emails for a specified division for emailing
     :param division_number the division to print the players from
     """
     if len(divisions[division_number]) > 0:
@@ -159,63 +163,124 @@ def print_division(division_number):
 
 def print_emails():
     """
-    List players name and email address email - better if printed by division
+    Prints list of all active players name and email address email - ordered by division
     :return: none
     """
     for d in range(1,7):
         print_division(d)
 
+##
+## Player operations
+##
+
+def update_divisions(number_promote):
+    """
+    Updates all the divisions and promotes the number of players provided
+    :param number_promote: how many to promote or relegate
+    :return:
+    """
+
+    # sort on points
+    def getKey(item):
+        return item['points_current']
+
+    # deep copy divisions to stop churn as we edit
+    edit_divisions = copy.deepcopy(divisions)
+    for d in range(1,7):
+        # debug print " d= %d " % (d)
+        div = edit_divisions[d]
+        # sort divisions for promotion & demotion so we can just take the first N up or down
+        divp = sorted(div, key=getKey, reverse=True)
+        divd = sorted(div, key=getKey)
+        # debug print divp
+        # debug print divd
+
+        # promote top n up if not division 1
+        if d != 1:
+            # promoting n players up
+            for p in range(0,number_promote):
+                player = divp[p]
+                #debug print "promote %s %s" % (player['forename'],player['surname'])
+                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
+
+        # demote top n down if not division 6
+        if d != 6:
+            # demoting n players down
+            for p in range(0,number_promote):
+                player = divd[p]
+                #debug print "demote %s %s" % (player['forename'],player['surname'])
+                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d+1,0,d,player['points_current'])
+
+def get_players():
+    """
+    Get the players list an array of player dictionaries
+    :return: players list
+    """
+    return players
+
+def get_none():
+    """
+    Get no edit code
+    :return: edit_none global value for no edit
+    """
+    return edit_none
+
 def edit_player(forename,surname,email,phone_number,division_current,points_current,division_previous,points_previous):
     """
-    edit player info
-    :param forename:
-    :param surname:
-    :param email:
-    :param phone_number:
-    :param division_current:
-    :param points_current:
-    :param division_previous:
-    :param points_previous:
+    Edits specified player information
+    :param forename: Player forename
+    :param surname: Player surname
+    :param email: Player email
+    :param phone_number: Player phone number
+    :param division_current: Players current division. Use div_unavailable or div_absent if player not in league this time
+    :param points_current: Players current division points
+    :param division_previous: Players previous division, 0 if no previous
+    :param points_previous: Players previous division points, 0 if no previous
     :return:
     """
 
     for player in players:
-        # lower case name match
+        # lower case name match we assume player names are unique
         if (string.lower(player['forename'])==string.lower(forename)) and (string.lower(player['surname'])==string.lower(surname)):
-            # only save valid edit
+            # only save valid edits ignore none
             if email != '':
                 player['email'] = email
             if phone_number != '':
                 player['phone_number'] = phone_number
-            if division_current != -2:
+            if division_current != edit_none:
                 if player['division_current'] != division_current:
-                    # need to shuffle divisons
+                    # division change need to shuffle divisions
                     divisions[player['division_current']].remove(player)
                     player['division_current'] = division_current
                     divisions[division_current].append(player)
-            if points_current != -2:
+            if points_current != edit_none:
                 player['points_current'] = points_current
-            if division_previous != -2:
+            if division_previous != edit_none:
                 player['division_previous'] = division_previous
-            if points_previous != -2:
+            if points_previous != edit_none:
                 player['points_previous'] = points_previous
 
 
 def reset_players():
+    """
+    Test function to clear players list
+    :return:
+    """
     del players[0:len(players)]
     divisions.clear()
 
 def add_player(forename,surname,email,phone,division):
     """
-    Adds a player to the league
+    Adds a player to the league division specified
     :param forename: Players forname
     :param surname: Players surname
     :param email: Players email
-    :param phone: Players email
-    :param division: Players division
+    :param phone: Players phone
+    :param division: Players division to add them to, Use div_unavailable or div_absent if player not in league this time
     :return:
     """
-    print ("add player stub")
+
+    # Build player dictionary
     player = {'forename':'','surname':'','phone_number':'','email':'','division_current':0,'division_previous':0,'points_previous':0,'points_current':0}
     player['forename'] = forename
     player['surname'] = surname
@@ -229,12 +294,13 @@ def add_player(forename,surname,email,phone,division):
 
 def get_player_info(forename,surname):
     """
-    get the players info  - assumes names are unique
+    Get the players info - assumes names are unique
     :param forename: Players forename to get info
     :param surname: Players surname to get info
     :return: player info as dict or empty dict if not found
     """
 
+    # create a deep copy
     info = {}
     for player in players:
         # lower case name match
@@ -258,7 +324,7 @@ def delete_player(forename,surname):
     :param surname: Players surname to delete
     :return:
     """
-    print ("delete player stub")
+
     for player in players:
         # lower case name match
         if (string.lower(player['forename'])==string.lower(forename)) and (string.lower(player['surname'])==string.lower(surname)):
@@ -365,21 +431,7 @@ def save_players(filename):
         f.write("\n")
     f.close()
 
-def print_rules():
-    print("League rules\n============")
-    print("1. If a player is unable to turn up to play, for any reason, by the end of the round date, their opponent can claim 4 points.")
-    print("2. At least 2 matches must be played to stay in the divisions.")
-    print("3. A player who has the maximum or near the maximum points after the finishing round date may be promoted.")
-    print("4. ANYONE WISHING TO JOIN THE DIVISIONS SHOULD WRITE THEIR NAME IN THE BLANK SPACE OF DIVISIONS 4, 5 or 6")
-    print("   AND PLAY AS MANY MATCHES AS POSSIBLE. IF THESE SPACES ARE FILLED OR IF TOO LITTLE TIME REMAINS BEFORE ")
-    print("   THE END OF THE CURRENT ROUND PLEASE WRITE YOUR NAME AND CONTACT NUMBER BELOW OR CONTACT THE LEAGUE ")
-    print("   ORGANISER, JOHN DOE AT j.doe@anemailaddress.com. IF POSSIBLE, INDICATE THE LEVEL AT WHICH YOU WOULD")
-    print("   LIKE TO ENTER. ANY SUGGESTIONS ARE WELCOME. ENCOURAGE OLD HANDS OR NEW ARRIVALS TO JOIN.")
 
-def print_signup():
-    print("\nList of players wishing to join the league:")
-    print("NAME		tel no.		email				 Division?")
-    print("______________________________________________________")
 
 # This tests all the code modules if players.py is run directly rather than as an import
 if __name__=="__main__":
@@ -387,7 +439,7 @@ if __name__=="__main__":
     print __name__
 
     # test load print and save single players file
-    load_players("../data/test-players.txt")
+    load_players(players_file)
     update_divisions(2)
     print_division(1)
     print_division(2)
