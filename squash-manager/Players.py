@@ -104,24 +104,44 @@ def print_table(division_number):
             print "|   | %-*s %s" % (longest,' ',table_rows[6])
             print "%s--------------------------------------" % (divider)
             letter = letter + 1
+    print
 
 def print_title():
     """
     Prints the title for the squash table print out
     :return:
     """
-    print "STAFF SQUASH LEAGUE"
-    print "ALL GAMES MUST BE PLAYED BY 9 am Wed 27th APRIL 2016"
-    print "NEW PLAYERS WELCOME"
-    print "JUST LEAVE CONTACT DETAILS ON THE BOTTOM PAGE (PEN ABOVE)"
+    print "                 STAFF SQUASH LEAGUE                     "
+    print "  ALL GAMES MUST BE PLAYED BY 9 am Wed 27th APRIL 2016   "
+    print "                 NEW PLAYERS WELCOME                     "
+    print "JUST LEAVE CONTACT DETAILS ON THE BOTTOM PAGE (PEN ABOVE)\n"
 
 def print_points():
     """
     Prints the points scoring table for the squash table print out
     :return:
     """
-    print "Points scoring system - Play until one player has won three (3) games"
-    print "***** TODO NICE TABLE ******"
+    print "Points scoring system - Play until one player has won three (3) games\n"
+    print "\tPlayer 1\tPlayer 2\t Player 1\t Player 2"
+    print "\tNo. wins\tNo. wins\t Points  \t Points"
+    print "-------------------------------------------------"
+    print "\tCompleted games "
+    print "-------------------------------------------------"
+    print "\t3       \t0        \t7        \t1"
+    print "\t3       \t1        \t6        \t2"
+    print "\t3       \t2        \t5        \t3"
+    print "\tUnfinished games "
+    print "-------------------------------------------------"
+    print "\t2       \t2        \t4        \t4"
+    print "\t2       \t1        \t5        \t3"
+    print "\t2       \t0        \t6        \t2"
+    print "\t1       \t1        \t4        \t4"
+    print "\t1       \t0        \t5        \t3"
+    print "\tOpponent doesn't turn up"
+    print "-------------------------------------------------"
+    print "\t0       \t0        \t4        \t0\n"
+
+
 
 def print_rules():
     """
@@ -136,7 +156,7 @@ def print_rules():
     print("   AND PLAY AS MANY MATCHES AS POSSIBLE. IF THESE SPACES ARE FILLED OR IF TOO LITTLE TIME REMAINS BEFORE ")
     print("   THE END OF THE CURRENT ROUND PLEASE WRITE YOUR NAME AND CONTACT NUMBER BELOW OR CONTACT THE LEAGUE ")
     print("   ORGANISER, JOHN DOE AT j.doe@anemailaddress.com. IF POSSIBLE, INDICATE THE LEVEL AT WHICH YOU WOULD")
-    print("   LIKE TO ENTER. ANY SUGGESTIONS ARE WELCOME. ENCOURAGE OLD HANDS OR NEW ARRIVALS TO JOIN.")
+    print("   LIKE TO ENTER. ANY SUGGESTIONS ARE WELCOME. ENCOURAGE OLD HANDS OR NEW ARRIVALS TO JOIN.\n")
 
 def print_signup():
     """
@@ -145,7 +165,7 @@ def print_signup():
     """
     print("\nList of players wishing to join the league:")
     print("NAME		tel no.		email				 Division?")
-    print("______________________________________________________")
+    print("______________________________________________________\n")
 
 
 ##
@@ -226,7 +246,8 @@ def update_divisions(number_promote):
             # promoting n players up
             for p in range(0,number_promote):
                 player = divp[p]
-                #debug print "promote %s %s" % (player['forename'],player['surname'])
+                #debug
+                print "promote %s %s" % (player['forename'],player['surname'])
                 edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
 
         # demote top n down if not division 6
@@ -234,7 +255,8 @@ def update_divisions(number_promote):
             # demoting n players down
             for p in range(0,number_promote):
                 player = divd[p]
-                #debug print "demote %s %s" % (player['forename'],player['surname'])
+                #debug
+                print "demote %s %s" % (player['forename'],player['surname'])
                 edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d+1,0,d,player['points_current'])
 
 def get_players():
@@ -474,45 +496,42 @@ if __name__=="__main__":
     print_emails()
     print_division(1)
     print_notice()
-    # add points for divison 1
+    #
+    # Add points for divison 1 & test editing and layer rollup
+    #
     edit_player("Joe","Bloggs","","",edit_none,3,edit_none,edit_none)
     edit_player("Sarah","Brown","","",edit_none,8,edit_none,edit_none)
     edit_player("Andrew","Smith","","",edit_none,6,edit_none,edit_none)
     edit_player("Ray","Charles","","",edit_none,12,edit_none,edit_none)
     edit_player("Kevin","White","","",edit_none,5,edit_none,edit_none)
+    # check players are ranked
     print_standing(1)
 
     #
     # Test read functions
     #
+    # dict array
     print get_players()
+    # -2
     print get_none()
-    print get_player_info("John","Brown")
+    # dict
+    print "%s" % get_player_info("John","Brown")['phone_number']
+    print "%s" % get_player_info("Sarah","Brown")['email']
 
+    # Edit functions
+    add_player("Mickey","Mouse","mickey@gmail.com","01234567890",4)
+    print_division(4)
+    delete_player("Mickey","Mouse")
+    print_division(4)
 
-    #update_divisions(2)
+    print_standing(1)
+    print_standing(2)
+    # promote 2 up & down
+    update_divisions(2)
+    # two up from div 2
+    print_standing(1)
+    print_standing(2)
 
-
-
-    #add_player("Tim","Jones","drkanukie@gmog.com","01480411300",4)
-    #print_table(5)
-    #print "%s" % get_player_info("Sarah","Brown")['email']
-    #print_division(1)
-    #edit_player("Sarah","Brown","sillybilly@gmail.com","123456",2,0,1,3)
-    #print_division(1)
-    #print_division(2)
-    #print_players()
-    #delete_player("Tim","Jones")
-    #print_division(4)
-    #print_players()
-    #print_division(1)
-    #print_emails()
-    #print_division(div_absent)
-    #print_division(div_unavailable)
-    #print_rules()
-    #print_signup()
-    #print_division(3)
-    #print_division(1)
-    #print_division(2)
-    #save_players("../data/players_backup.txt")
+    # don't write to main file
+    save_players("../data/players_test.txt")
 
