@@ -17,8 +17,8 @@ players.load_players(data_file)
 # using dictionaries to control data
 while True:
     print "\n  - Please choose from the following options:\n"
-    print "\t1 - To Print out the list of players and all relevant information for notice board\n"
-    print "\t2 - To Print out list of players e-mail addresses\n"
+    print "\t1 - To print out the list of players and all relevant information for notice board\n"
+    print "\t2 - To print out list of players e-mail addresses\n"
     print "\t3 - To print a list of players from division (1-6) \n"
     print "\t4 - To add players to division\n"
     print "\t5 - To delete players from a division\n"
