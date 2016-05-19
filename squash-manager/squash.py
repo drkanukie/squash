@@ -201,11 +201,13 @@ while True:
         option = raw_input("\t: ")
         if string.lower(option) == "y":
             players.update_divisions(num_promote)
-
+        # trigger save on exit
         modified = 1
 
     elif option == "q":
+        #
         # if the data has changed then prompt to save file
+        #
         if modified > 0:
             print "\nSave players changes y/n?\n"
             option = raw_input("\t: ")
