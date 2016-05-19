@@ -246,8 +246,7 @@ def update_divisions(number_promote):
             # promoting n players up
             for p in range(0,number_promote):
                 player = divp[p]
-                #debug
-                print "promote %s %s" % (player['forename'],player['surname'])
+                #debug print "promote %s %s" % (player['forename'],player['surname'])
                 edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d-1,0,d,player['points_current'])
 
         # demote top n down if not division 6
@@ -255,9 +254,17 @@ def update_divisions(number_promote):
             # demoting n players down
             for p in range(0,number_promote):
                 player = divd[p]
-                #debug
-                print "demote %s %s" % (player['forename'],player['surname'])
+                #debug print "demote %s %s" % (player['forename'],player['surname'])
                 edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d+1,0,d,player['points_current'])
+
+        # reset points & division of players still in this division
+        for player in div:
+            # get canonical info that has been edited in previous passes
+            info = get_player_info(player['forename'],player['surname'])
+            if info['division_current'] == d:
+                # still in the division save previous division and points and reset points
+                #debug print "remains %s %s" % (player['forename'],player['surname'])
+                edit_player(player['forename'],player['surname'],player['email'],player['phone_number'],d,0,d,player['points_current'])
 
 def get_players():
     """
@@ -497,16 +504,22 @@ if __name__=="__main__":
     print_division(1)
     print_notice()
     #
-    # Add points for divison 1 & test editing and layer rollup
+    # Add points to division to test rollup and player edits
     #
-    edit_player("Joe","Bloggs","","",edit_none,3,edit_none,edit_none)
-    edit_player("Sarah","Brown","","",edit_none,8,edit_none,edit_none)
-    edit_player("Andrew","Smith","","",edit_none,6,edit_none,edit_none)
-    edit_player("Ray","Charles","","",edit_none,12,edit_none,edit_none)
-    edit_player("Kevin","White","","",edit_none,5,edit_none,edit_none)
+    points = 12
+    for player in players:
+        edit_player(player['forename'],player['surname'],"","",edit_none,points,edit_none,edit_none)
+        points = points - 2
+        if points < 0:
+            points = 12
+
     # check players are ranked
     print_standing(1)
-
+    print_standing(2)
+    print_standing(3)
+    print_standing(4)
+    print_standing(5)
+    print_standing(6)
     #
     # Test read functions
     #
@@ -520,18 +533,25 @@ if __name__=="__main__":
 
     # Edit functions
     add_player("Mickey","Mouse","mickey@gmail.com","01234567890",4)
-    print_division(4)
+    print_standing(4)
     delete_player("Mickey","Mouse")
-    print_division(4)
+    print_standing(4)
 
     print_standing(1)
     print_standing(2)
+    print_standing(3)
+    print_standing(4)
+    print_standing(5)
+    print_standing(6)
     # promote 2 up & down
     update_divisions(2)
     # two up from div 2
     print_standing(1)
     print_standing(2)
-
-    # don't write to main file
+    print_standing(3)
+    print_standing(4)
+    print_standing(5)
+    print_standing(6)
+    # don't write to main file go and check new file for correct saved data
     save_players("../data/players_test.txt")
 

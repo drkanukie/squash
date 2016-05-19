@@ -2,46 +2,46 @@ forename:Joe
 surname:Bloggs
 email:j.bloggs@anemailadress.com
 phone_number:07896453423
-division_current:2
+division_current:1
 points_current:0
 division_previous:1
-points_previous:3
+points_previous:12
 
 forename:Sarah
 surname:Brown
 email:s.brown@anemailadress.com
 phone_number:07892547632
 division_current:1
-points_current:8
-division_previous:0
-points_previous:0
+points_current:0
+division_previous:1
+points_previous:10
 
 forename:Andrew
 surname:Smith
 email:a.smith@anemailadress.com
 phone_number:07684345432
 division_current:1
-points_current:6
-division_previous:0
-points_previous:0
+points_current:0
+division_previous:1
+points_previous:8
 
 forename:Ray
 surname:Charles
 email:r.charles@anemailadress.com
 phone_number:07892536783
 division_current:1
-points_current:12
-division_previous:0
-points_previous:0
+points_current:0
+division_previous:1
+points_previous:6
 
 forename:Kevin
 surname:White
 email:@anemailadress.com
 phone_number:07825371981
-division_current:1
-points_current:5
-division_previous:0
-points_previous:0
+division_current:2
+points_current:0
+division_previous:1
+points_previous:4
 
 forename:Samantha
 surname:Collins
@@ -50,7 +50,7 @@ phone_number:07834984543
 division_current:2
 points_current:0
 division_previous:1
-points_previous:0
+points_previous:2
 
 forename:Frank
 surname:Jones
@@ -65,19 +65,19 @@ forename:Liam
 surname:Blair
 email:l.blair@anemailadress.com
 phone_number:07123456754
-division_current:3
+division_current:1
 points_current:0
 division_previous:2
-points_previous:0
+points_previous:12
 
 forename:Iain
 surname:Wilkins
 email:l.wilkins@anemailadress.com
 phone_number:07865476211
-division_current:2
+division_current:1
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:2
+points_previous:10
 
 forename:Pat
 surname:Philips
@@ -85,8 +85,8 @@ email:p.philips@anemailadress.com
 phone_number:07611234321
 division_current:2
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:2
+points_previous:8
 
 forename:Edward
 surname:Costello
@@ -94,17 +94,17 @@ email:e.cosetello@anemailadress.com
 phone_number:07812451782
 division_current:2
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:2
+points_previous:6
 
 forename:John
 surname:White
 email:j.white@anemailaddress.com
 phone_number:07854358988
-division_current:2
+division_current:3
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:2
+points_previous:4
 
 forename:Tim
 surname:Pratchett
@@ -113,7 +113,7 @@ phone_number:07823678988
 division_current:4
 points_current:0
 division_previous:3
-points_previous:0
+points_previous:2
 
 forename:Eleanor
 surname:House
@@ -128,19 +128,19 @@ forename:Gregory
 surname:Davies
 email:g.davies@anemailadress.com
 phone_number:07832142123
-division_current:3
+division_current:2
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:3
+points_previous:12
 
 forename:Tina
 surname:Turner
 email:t.turner@anemailadress.com
 phone_number:07821232544
-division_current:3
+division_current:2
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:3
+points_previous:10
 
 forename:Sally
 surname:Stevens
@@ -148,8 +148,8 @@ email:s.stevens@anemailadress.com
 phone_number:07897231432
 division_current:3
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:3
+points_previous:8
 
 forename:John
 surname:Lennon
@@ -157,17 +157,17 @@ email:j.lennon@anemailadress.com
 phone_number:07123532143
 division_current:3
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:3
+points_previous:6
 
 forename:Neil
 surname:Devon
 email:n.devon@anemailadress.com
 phone_number:07186432143
-division_current:5
+division_current:4
 points_current:0
 division_previous:4
-points_previous:0
+points_previous:4
 
 forename:Earl
 surname:Griffin
@@ -176,52 +176,52 @@ phone_number:07113932143
 division_current:5
 points_current:0
 division_previous:4
-points_previous:0
+points_previous:2
 
 forename:Samantha
 surname:Smith
 email:s.smith@anemailadress.com
 phone_number:07823691488
-division_current:4
+division_current:5
 points_current:0
-division_previous:0
+division_previous:4
 points_previous:0
 
 forename:Cathrine
 surname:Peterson
 email:c.peterson@anemailadress.com
 phone_number:07823548988
-division_current:4
+division_current:3
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:4
+points_previous:12
 
 forename:Kevin
 surname:Fletcher
 email:k.fletcher@anemailadress.com
 phone_number:07823671238
-division_current:4
+division_current:3
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:4
+points_previous:10
 
 forename:Malcolm
 surname:Reynolds
 email:m.reynolds@anemailaddress.com
 phone_number:07823754988
-division_current:6
+division_current:4
 points_current:0
 division_previous:5
-points_previous:0
+points_previous:8
 
 forename:John
 surname:Brown
 email:j.brown@anemailaddress.com
 phone_number:07824358988
-division_current:6
+division_current:4
 points_current:0
 division_previous:5
-points_previous:0
+points_previous:6
 
 forename:Andrew
 surname:Jackson
@@ -229,25 +229,25 @@ email:a.jackson@anemailaddress.com
 phone_number:07806278988
 division_current:5
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:5
+points_previous:4
 
 forename:Bob
 surname:Jefferies
 email:j.jefferies@anemailaddress.com
 phone_number:07887678988
-division_current:5
+division_current:6
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:5
+points_previous:2
 
 forename:Felicity
 surname:Winston
 email:f.winston@anemailaddress.com
 phone_number:07975678988
-division_current:5
+division_current:6
 points_current:0
-division_previous:0
+division_previous:5
 points_previous:0
 
 forename:John
@@ -257,7 +257,7 @@ phone_number:07826698988
 division_current:5
 points_current:0
 division_previous:6
-points_previous:0
+points_previous:12
 
 forename:Juliet
 surname:Burke
@@ -266,7 +266,7 @@ phone_number:07811278988
 division_current:5
 points_current:0
 division_previous:6
-points_previous:0
+points_previous:10
 
 forename:Michael
 surname:Bluth
@@ -274,8 +274,8 @@ email:m.bluth@anemailaddress.com
 phone_number:07823556988
 division_current:6
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:6
+points_previous:8
 
 forename:Sam
 surname:Tyler
@@ -283,8 +283,8 @@ email:s.tyler@anemailaddress.com
 phone_number:07827788988
 division_current:6
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:6
+points_previous:6
 
 forename:Peter
 surname:Bond
@@ -292,14 +292,23 @@ email:p.bond@anemailaddress.com
 phone_number:07822378988
 division_current:6
 points_current:0
-division_previous:0
-points_previous:0
+division_previous:6
+points_previous:4
 
 forename:Ed
 surname:Jones
 email:crazy.ed.jones@gmail.com
-phone_number:
+phone_number: 07347438988
 division_current:0
+points_current:2
+division_previous:0
+points_previous:0
+
+forename:Mad
+surname:Dog
+email:maddog@gmail.com
+phone_number: 07643638988
+division_current:-1
 points_current:0
 division_previous:0
 points_previous:0

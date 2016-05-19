@@ -1,4 +1,5 @@
 import players
+import string
 
 #
 # default data file

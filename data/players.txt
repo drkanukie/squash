@@ -298,9 +298,17 @@ points_previous:0
 forename:Ed
 surname:Jones
 email:crazy.ed.jones@gmail.com
-phone_number:
+phone_number: 07347438988
 division_current:0
 points_current:0
 division_previous:0
 points_previous:0
 
+forename:Mad
+surname:Dog
+email:maddog@gmail.com
+phone_number: 07643638988
+division_current:-1
+points_current:0
+division_previous:0
+points_previous:0
