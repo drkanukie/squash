@@ -1,6 +1,12 @@
 import players
 import string
 
+'''
+Squash league management UI
+
+Author: Ed Jones
+Date: 18 May 2016
+'''
 #
 # default data file
 data_file = "../data/players.txt"

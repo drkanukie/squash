@@ -3,6 +3,9 @@ import copy
 
 """
 Code to maintain a list of squash players contained in players (a global variable) and saved to a text file players.txt
+
+Author: Ed Jones
+Date: 18 May 2016
 """
 
 # global players list & storage file
